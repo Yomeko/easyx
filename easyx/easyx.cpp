@@ -18,6 +18,7 @@ const double maxSpeed = 5;
 int is_lbutton_down = 0;
 
 int is_up = 0, is_down = 0, is_left = 0, is_right = 0;
+int moving = 0;
 
 int main()
 {
@@ -137,22 +138,74 @@ int main()
         {
             cleardevice();
         }
-        if (is_up)
+        moving = is_up^(is_down<<1)^(is_left<<2)^(is_right<<3);
+        switch (moving)
         {
-            y -= is_left^is_right?maxSpeed/2+1:maxSpeed;
+        case 0:
+            break;
+        case 1:
+            y -= maxSpeed;
+            break;
+        case 2:
+            y += maxSpeed;
+            break;
+        case 4:
+            x -= maxSpeed;
+            break;
+        case 8:
+            x += maxSpeed;
+            break;
+        case 3:
+            break;
+        case 12:
+            break;
+        case 5:
+            x -= maxSpeed/2;
+            y -= maxSpeed/2;
+            break;
+        case 6:
+            x -= maxSpeed/2;
+            y += maxSpeed/2;
+            break;
+        case 9:
+            x += maxSpeed/2;
+            y -= maxSpeed/2;
+            break;
+        case 10:
+            x += maxSpeed/2;
+            y += maxSpeed/2;
+            break;
+        case 7:
+            x -= maxSpeed;
+            break;
+        case 11:
+            x += maxSpeed;
+            break;
+        case 13:
+            y -= maxSpeed;
+            break;
+        case 14:
+            y += maxSpeed;
+            break;
+        case 15:
+            break;
         }
-        if (is_down)
-        {
-            y += is_left^is_right?maxSpeed/2+1:maxSpeed;
-        }
-        if (is_left)
-        {
-            x -= is_up^is_down?maxSpeed/2+1:maxSpeed;
-        }
-        if (is_right)
-        {
-            x += is_up^is_down?maxSpeed/2+1:maxSpeed;
-        }
+        //if (is_up)
+        //{
+        //    y -= is_left^is_right?maxSpeed/2+1:maxSpeed;
+        //}
+        //if (is_down)
+        //{
+        //    y += is_left^is_right?maxSpeed/2+1:maxSpeed;
+        //}
+        //if (is_left)
+        //{
+        //    x -= is_up^is_down?maxSpeed/2+1:maxSpeed;
+        //}
+        //if (is_right)
+        //{
+        //    x += is_up^is_down?maxSpeed/2+1:maxSpeed;
+        //}
         x=max(x,0);x=min(x,799);
         y=max(y,0);y=min(y,599);
         setcolor(BLACK);
