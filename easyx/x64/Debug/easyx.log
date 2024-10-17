@@ -1,16 +1,16 @@
 ﻿  easyx.cpp
-D:\user\source\repos\easyx\easyx\easyx.cpp(119,35): warning C4244: “=”: 从“double”转换到“short”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(120,35): warning C4244: “=”: 从“double”转换到“short”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(121,29): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(122,29): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(122,35): warning C4244: “=”: 从“double”转换到“short”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(123,35): warning C4244: “=”: 从“double”转换到“short”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(124,29): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(125,29): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
 D:\user\source\repos\easyx\easyx\easyx.cpp(16,25): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
 D:\user\source\repos\easyx\easyx\easyx.cpp(16,25): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(163,26): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(164,26): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(167,26): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(168,26): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(171,26): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(172,26): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(175,26): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(176,26): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(153,26): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(154,26): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(157,26): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(158,26): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(161,26): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(162,26): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(165,26): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(166,26): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
   easyx.vcxproj -> D:\user\source\repos\easyx\x64\Debug\easyx.exe

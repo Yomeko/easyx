@@ -20,6 +20,8 @@ int is_lbutton_down = 0;
 int is_up = 0, is_down = 0, is_left = 0, is_right = 0;
 int moving = 0;
 
+short dx = 0, dy = 0;
+
 int main()
 {
     //std::cout << "Hello World!\n";
@@ -33,18 +35,21 @@ int main()
     while (true)
     {
         clock_t start = clock();
+
+        /*消息*/
         while (peekmessage(&msg))
         {
-            //if (msg.message == WM_QUIT) return 0;
             if (msg.vkcode == VK_ESCAPE) return 0;
             if (msg.message == WM_LBUTTONDOWN)
             {
+                setcapture();
                 mousex = msg.x;
                 mousey = msg.y;
                 is_lbutton_down = 1;
             }
             else if (msg.message == WM_LBUTTONUP)
             {
+                releasecapture();
                 is_lbutton_down = 0;
             }
             if (msg.message == WM_KEYDOWN)
@@ -109,34 +114,15 @@ int main()
             }
         }
 
+        /*运算*/
         if (is_lbutton_down)
-        //peekmessage(&msg);
-        //if (msg.vkcode == VK_ESCAPE) return 0;
-        //if (msg.lbutton)
         {
-            short dx = msg.x - mousex;
-            short dy = msg.y - mousey;
+            dx = msg.x - mousex;
+            dy = msg.y - mousey;
             dx = (dx < 0 ? -1 : 1)*min((int)abs(dx),50*abs(dx)/sqrt(pow(dx,2)+pow(dy,2)));
             dy = (dy < 0 ? -1 : 1)*min((int)abs(dy),50*abs(dy)/sqrt(pow(dx,2)+pow(dy,2)));
             x += dx*maxSpeed/50;
             y += dy*maxSpeed/50;
-            //x=max(x,0);x=min(x,799);
-            //y=max(y,0);y=min(y,599);
-            cleardevice();
-            setcolor(BLACK);
-            setfillcolor(BLACK);
-            fillcircle(mousex, mousey, 50);
-            setfillcolor(WHITE);
-            setcolor(RED);
-            fillcircle(mousex+ dx, mousey + dy,20);
-            //setcolor(BLACK);
-            //circle(x, y, r);
-            //Sleep(10);
-            //continue;
-        }
-        else if (!is_lbutton_down)
-        {
-            cleardevice();
         }
         moving = is_up^(is_down<<1)^(is_left<<2)^(is_right<<3);
         switch (moving)
@@ -190,35 +176,22 @@ int main()
         case 15:
             break;
         }
-        //if (is_up)
-        //{
-        //    y -= is_left^is_right?maxSpeed/2+1:maxSpeed;
-        //}
-        //if (is_down)
-        //{
-        //    y += is_left^is_right?maxSpeed/2+1:maxSpeed;
-        //}
-        //if (is_left)
-        //{
-        //    x -= is_up^is_down?maxSpeed/2+1:maxSpeed;
-        //}
-        //if (is_right)
-        //{
-        //    x += is_up^is_down?maxSpeed/2+1:maxSpeed;
-        //}
         x=max(x,0);x=min(x,799);
         y=max(y,0);y=min(y,599);
+
+        /*绘制*/
+        cleardevice();
         setcolor(BLACK);
         circle(x, y, r);
-        //else if(!msg.lbutton)
-        //{
-        //    mousex = msg.x;
-        //    mousey = msg.y;
-        //    cleardevice();
-        //    circle(x, y, r);
-        //    //Sleep(10);
-        //    //continue;
-        //}
+        if (is_lbutton_down)
+        {
+            setcolor(LIGHTGRAY);
+            setfillcolor(LIGHTGRAY);
+            fillcircle(mousex, mousey, 50);
+            setfillcolor(WHITE);
+            setcolor(RED);
+            fillcircle(mousex + dx, mousey + dy, 20);
+        }
         clock_t end = clock();
         int elapsed = (int)(end - start)*1000/CLOCKS_PER_SEC;
         if (elapsed < 1000 / 75)
