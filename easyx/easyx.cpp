@@ -11,6 +11,7 @@
 #define WIDTH 800
 #define HEIGHT 600
 
+/*全局参数变量声明，包括坐标、半径、速度、鼠标位置、按键状态、移动状态、方向参数*/
 int x = 400, y = 300, r = 10;
 short mousex=400, mousey=300;
 const double maxSpeed = 5;
