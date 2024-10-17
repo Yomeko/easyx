@@ -131,48 +131,48 @@ int main()
         case 0:
             break;
         case 1:
-            y -= maxSpeed;
+            y -= (int)maxSpeed;
             break;
         case 2:
-            y += maxSpeed;
+            y += (int)maxSpeed;
             break;
         case 4:
-            x -= maxSpeed;
+            x -= (int)maxSpeed;
             break;
         case 8:
-            x += maxSpeed;
+            x += (int)maxSpeed;
             break;
         case 3:
             break;
         case 12:
             break;
         case 5:
-            x -= maxSpeed/2;
-            y -= maxSpeed/2;
+            x -= (int)maxSpeed/2;
+            y -= (int)maxSpeed/2;
             break;
         case 6:
-            x -= maxSpeed/2;
-            y += maxSpeed/2;
+            x -= (int)maxSpeed/2;
+            y += (int)maxSpeed/2;
             break;
         case 9:
-            x += maxSpeed/2;
-            y -= maxSpeed/2;
+            x += (int)maxSpeed/2;
+            y -= (int)maxSpeed/2;
             break;
         case 10:
-            x += maxSpeed/2;
-            y += maxSpeed/2;
+            x += (int)maxSpeed/2;
+            y += (int)maxSpeed/2;
             break;
         case 7:
-            x -= maxSpeed;
+            x -= (int)maxSpeed;
             break;
         case 11:
-            x += maxSpeed;
+            x += (int)maxSpeed;
             break;
         case 13:
-            y -= maxSpeed;
+            y -= (int)maxSpeed;
             break;
         case 14:
-            y += maxSpeed;
+            y += (int)maxSpeed;
             break;
         case 15:
             break;
