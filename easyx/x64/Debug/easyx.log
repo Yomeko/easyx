@@ -1,6 +1,6 @@
 ﻿  easyx.cpp
-D:\user\source\repos\easyx\easyx\easyx.cpp(123,35): warning C4244: “=”: 从“double”转换到“short”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(124,35): warning C4244: “=”: 从“double”转换到“short”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(125,29): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(126,29): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(207,35): warning C4244: “=”: 从“double”转换到“short”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(208,35): warning C4244: “=”: 从“double”转换到“short”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(209,29): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\easyx.cpp(210,29): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
   easyx.vcxproj -> D:\user\source\repos\easyx\x64\Debug\easyx.exe

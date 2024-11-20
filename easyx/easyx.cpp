@@ -8,13 +8,15 @@
 #include"math.h"
 #include"time.h"
 
-#define WIDTH 800
-#define HEIGHT 600
+#define WIDTH 1024
+#define HEIGHT 768
 
 /*全局参数变量声明，包括坐标、半径、速度、鼠标位置、按键状态、移动状态、方向参数*/
-int x = 400, y = 300, r = 10;
-short mousex=400, mousey=300;
-const double maxSpeed = 5;
+int x = WIDTH/2, y = HEIGHT/2, r = 10;
+short mousex=WIDTH/2, mousey=HEIGHT/2;
+const double maxSpeed = 10;
+int cameraX = 0, cameraY = 0;
+int drawX = x, drawY = y;
 
 int is_lbutton_down = 0;
 
@@ -26,13 +28,20 @@ short dx = 0, dy = 0;
 int main()
 {
     //std::cout << "Hello World!\n";
+    //初始化图形库
+    IMAGE background;
+    loadimage(&background, _T("wallhaven-6ov8kl_3840x2160.png"));
+    int bgWidth = background.getwidth();
+    int bgHeight = background.getheight();
+    //初始化窗口
     initgraph(WIDTH, HEIGHT);
     setbkcolor(WHITE);
     cleardevice();
     ExMessage msg;
     setcolor(BLACK);
     setfillcolor(BLACK);
-    circle(x, y, r);
+    putimage(0, 0, WIDTH, HEIGHT, &background, cameraX, cameraY);
+    circle(drawX, drawY, r);
     while (true)
     {
         clock_t start = clock();
@@ -41,78 +50,153 @@ int main()
         while (peekmessage(&msg))
         {
             if (msg.vkcode == VK_ESCAPE) return 0;
-            if (msg.message == WM_LBUTTONDOWN)
+            switch (msg.message)
             {
-                setcapture();
-                mousex = msg.x;
-                mousey = msg.y;
-                is_lbutton_down = 1;
+                case WM_LBUTTONDOWN:
+                    setcapture();
+                    mousex = msg.x;
+                    mousey = msg.y;
+                    is_lbutton_down = 1;
+                    break;
+                case WM_LBUTTONUP:
+                    releasecapture();
+                    is_lbutton_down = 0;
+                    break;
+                case WM_KEYDOWN:
+                    switch (msg.vkcode)
+                    {
+                    case VK_UP:
+                        is_up = 1;
+                        break;
+                    case VK_DOWN:
+                        is_down = 1;
+                        break;
+                    case VK_LEFT:
+                        is_left = 1;
+                        break;
+                    case VK_RIGHT:
+                        is_right = 1;
+                        break;
+                    case 'W':
+                        is_up = 1;
+                        break;
+                    case 'S':
+                        is_down = 1;
+                        break;
+                    case 'A':
+                        is_left = 1;
+                        break;
+                    case 'D':
+                        is_right = 1;
+                        break;
+                    }
+                    break;
+                case WM_KEYUP:
+                    switch (msg.vkcode)
+                    {
+                    case VK_UP:
+                        is_up = 0;
+                        break;
+                    case VK_DOWN:
+                        is_down = 0;
+                        break;
+                    case VK_LEFT:
+                        is_left = 0;
+                        break;
+                    case VK_RIGHT:
+                        is_right = 0;
+                        break;
+                    case 'W':
+                        is_up = 0;
+                        break;
+                    case 'S':
+                        is_down = 0;
+                        break;
+                    case 'A':
+                        is_left = 0;
+                        break;
+                    case 'D':
+                        is_right = 0;
+                        break;
+                    }
+                    break;
+                case WM_CLOSE:
+                    return 0;
+                default:
+                    break;
             }
-            else if (msg.message == WM_LBUTTONUP)
-            {
-                releasecapture();
-                is_lbutton_down = 0;
-            }
-            if (msg.message == WM_KEYDOWN)
-            {
-                switch (msg.vkcode)
-                {
-                case VK_UP:
-                    is_up = 1;
-                    break;
-                case VK_DOWN:
-                    is_down = 1;
-                    break;
-                case VK_LEFT:
-                    is_left = 1;
-                    break;
-                case VK_RIGHT:
-                    is_right = 1;
-                    break;
-                case 'W':
-                    is_up = 1;
-                    break;
-                case 'S':
-                    is_down = 1;
-                    break;
-                case 'A':
-                    is_left = 1;
-                    break;
-                case 'D':
-                    is_right = 1;
-                    break;
-                }
-            }
-            else if (msg.message == WM_KEYUP)
-            {
-                switch (msg.vkcode)
-                {
-                case VK_UP:
-                    is_up = 0;
-                    break;
-                case VK_DOWN:
-                    is_down = 0;
-                    break;
-                case VK_LEFT:
-                    is_left = 0;
-                    break;
-                case VK_RIGHT:
-                    is_right = 0;
-                    break;
-                case 'W':
-                    is_up = 0;
-                    break;
-                case 'S':
-                    is_down = 0;
-                    break;
-                case 'A':
-                    is_left = 0;
-                    break;
-                case 'D':
-                    is_right = 0;
-                    break;
-                }
-            }
+            //if (msg.message == WM_LBUTTONDOWN)
+            //{
+            //    setcapture();
+            //    mousex = msg.x;
+            //    mousey = msg.y;
+            //    is_lbutton_down = 1;
+            //}
+            //else if (msg.message == WM_LBUTTONUP)
+            //{
+            //    releasecapture();
+            //    is_lbutton_down = 0;
+            //}
+            //if (msg.message == WM_KEYDOWN)
+            //{
+            //    switch (msg.vkcode)
+            //    {
+            //    case VK_UP:
+            //        is_up = 1;
+            //        break;
+            //    case VK_DOWN:
+            //        is_down = 1;
+            //        break;
+            //    case VK_LEFT:
+            //        is_left = 1;
+            //        break;
+            //    case VK_RIGHT:
+            //        is_right = 1;
+            //        break;
+            //    case 'W':
+            //        is_up = 1;
+            //        break;
+            //    case 'S':
+            //        is_down = 1;
+            //        break;
+            //    case 'A':
+            //        is_left = 1;
+            //        break;
+            //    case 'D':
+            //        is_right = 1;
+            //        break;
+            //    }
+            //}
+            //else if (msg.message == WM_KEYUP)
+            //{
+            //    switch (msg.vkcode)
+            //    {
+            //    case VK_UP:
+            //        is_up = 0;
+            //        break;
+            //    case VK_DOWN:
+            //        is_down = 0;
+            //        break;
+            //    case VK_LEFT:
+            //        is_left = 0;
+            //        break;
+            //    case VK_RIGHT:
+            //        is_right = 0;
+            //        break;
+            //    case 'W':
+            //        is_up = 0;
+            //        break;
+            //    case 'S':
+            //        is_down = 0;
+            //        break;
+            //    case 'A':
+            //        is_left = 0;
+            //        break;
+            //    case 'D':
+            //        is_right = 0;
+            //        break;
+            //    }
+            //}
         }
 
         /*运算*/
@@ -177,13 +261,27 @@ int main()
         case 15:
             break;
         }
-        x=max(x,0);x=min(x,799);
-        y=max(y,0);y=min(y,599);
+        //计算摄像机位置
+        cameraX = x - WIDTH / 2;
+        cameraY = y - HEIGHT / 2;
+        //限制摄像机位置
+        cameraX = max(cameraX, 0);
+        cameraX = min(cameraX, bgWidth - WIDTH);
+        cameraY = max(cameraY, 0);
+        cameraY = min(cameraY, bgHeight - HEIGHT);
+        //限制球位置
+        drawX = x - cameraX;
+        drawY = y - cameraY;
+        drawX = max(drawX, 0);drawX = min(drawX, WIDTH - 1);
+        drawY = max(drawY, 0);drawY = min(drawY, HEIGHT - 1);
+        x=max(x,0);x=min(x, bgWidth - 1);
+        y=max(y,0);y=min(y, bgHeight - 1);
 
         /*绘制*/
         cleardevice();
+        putimage(0, 0, WIDTH, HEIGHT, &background, cameraX, cameraY);
         setcolor(BLACK);
-        circle(x, y, r);
+        circle(drawX, drawY, r);
         if (is_lbutton_down)
         {
             setcolor(LIGHTGRAY);
@@ -193,6 +291,7 @@ int main()
             setcolor(RED);
             fillcircle(mousex + dx, mousey + dy, 20);
         }
+        /*计时*/
         clock_t end = clock();
         clock_t elapsed = end - start;
         clock_t step = CLOCKS_PER_SEC / 75;
