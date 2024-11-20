@@ -194,12 +194,23 @@ int main()
             fillcircle(mousex + dx, mousey + dy, 20);
         }
         clock_t end = clock();
-        int elapsed = (int)(end - start)*1000/CLOCKS_PER_SEC;
-        if (elapsed < 1000 / 75)
+        clock_t elapsed = end - start;
+        clock_t step = CLOCKS_PER_SEC / 75;
+        clock_t rest_s = clock();
+        if (elapsed < step)
         {
-            Sleep(1000 / 75 - elapsed);
+            clock_t rest_e = clock();
+            while (rest_e - rest_s < step - elapsed)
+            {
+                rest_e = clock();
+            }
         }
-        //Sleep(16);
+        //int elapsed = (int)(end - start)*1000/CLOCKS_PER_SEC;
+        //if (elapsed < 1000 / 75)
+        //{
+        //    Sleep(1000 / 75 - elapsed);
+        //}
+        //Sleep不好用！！！
     }
     return 0;
 }
