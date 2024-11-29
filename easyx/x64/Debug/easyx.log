@@ -1,6 +1,14 @@
-﻿  easyx.cpp
-D:\user\source\repos\easyx\easyx\easyx.cpp(207,35): warning C4244: “=”: 从“double”转换到“short”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(208,35): warning C4244: “=”: 从“double”转换到“short”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(209,29): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
-D:\user\source\repos\easyx\easyx\easyx.cpp(210,29): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+﻿  gameSystem.cpp
+D:\user\source\repos\easyx\easyx\gameSystem.cpp(134,32): warning C4244: “=”: 从“double”转换到“short”，可能丢失数据
+D:\user\source\repos\easyx\easyx\gameSystem.cpp(135,32): warning C4244: “=”: 从“double”转换到“short”，可能丢失数据
+D:\user\source\repos\easyx\easyx\gameSystem.cpp(136,28): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\gameSystem.cpp(137,28): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\gameSystem.cpp(161,32): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\gameSystem.cpp(162,32): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\gameSystem.cpp(166,32): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\gameSystem.cpp(167,32): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\gameSystem.cpp(171,32): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\gameSystem.cpp(172,32): warning C4244: “-=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\gameSystem.cpp(176,32): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
+D:\user\source\repos\easyx\easyx\gameSystem.cpp(177,32): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
   easyx.vcxproj -> D:\user\source\repos\easyx\x64\Debug\easyx.exe
